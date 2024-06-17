@@ -1,0 +1,78 @@
+@startuml MathEngine
+
+interface Function {
+    double evaluate();
+    String print();
+    List<Variable> getVariables();
+    void accept(Visitor visitor);
+}
+
+interface Parameter {
+    // getter y setter
+}
+
+class Variable implements Parameter {
+    private String name;
+    private double value;
+
+    // getters and setters
+}
+class Constant implements Parameter {
+    - value
+}
+
+interface Operation  {
+    + solve()
+}
+
+abstract class BinaryOperation {
+    - left : Parameter
+    - right : Parameter
+    - operand
+    + solve()
+}
+
+class Addition implements BinaryOperation {
+    + solve()
+}
+class Subtraction implements BinaryOperation {
+    + solve()
+}
+class Power implements BinaryOperation {
+    + solve()
+}
+class Product implements BinaryOperation {
+    + solve()
+}
+class Division implements BinaryOperation {
+    + solve()
+}
+
+interface Visitor {
+    void visit(Function function);
+    void visit(Operation operation);
+    void visit(Addition addition);
+    // Add visit methods for other operations
+}
+
+class PrintVisitor implements Visitor {
+    // implementation
+}
+
+abstract class UnaryOperation {
+    - number : Parameter
+    + solve()
+}
+class SquareRoot implements UnaryOperation {
+    + solve()
+}
+
+Parameter <|-- Operation
+Operation <|... UnaryOperation
+Operation <|... BinaryOperation
+
+@enduml
+
+' La función en si tiene que ser un composite y
+' algunas operaciones como printear, resolver o
+' listar variables pueden hacerse con visitors
