@@ -1,7 +1,7 @@
 package edu.austral.ingsis.math.operations;
 
 import edu.austral.ingsis.math.Function;
-import edu.austral.ingsis.math.Visitor;
+import edu.austral.ingsis.math.visitors.Visitor;
 
 public class Power implements Function {
 

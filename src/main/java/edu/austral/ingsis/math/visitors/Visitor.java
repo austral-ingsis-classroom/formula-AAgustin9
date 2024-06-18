@@ -1,5 +1,7 @@
-package edu.austral.ingsis.math;
+package edu.austral.ingsis.math.visitors;
 
+import edu.austral.ingsis.math.Number;
+import edu.austral.ingsis.math.Variable;
 import edu.austral.ingsis.math.operations.*;
 
 public interface Visitor<T> {
