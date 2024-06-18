@@ -1,5 +1,7 @@
 package edu.austral.ingsis.math;
 
+import edu.austral.ingsis.math.operations.*;
+
 public interface Visitor<T> {
 
     T visit(Addition addition);
