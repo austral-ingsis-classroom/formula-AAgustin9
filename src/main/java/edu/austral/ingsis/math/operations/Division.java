@@ -4,12 +4,13 @@ import edu.austral.ingsis.math.Function;
 import edu.austral.ingsis.math.Visitor;
 
 public class Division implements Function {
-    private final Function left;
-    private final Function right;
 
-    public Division(Function left, Function right) {
-        this.left = left;
-        this.right = right;
+    private final Function divisor;
+    private final Function dividend;
+
+    public Division(Function divisor, Function dividend) {
+        this.divisor = divisor;
+        this.dividend = dividend;
     }
 
     @Override
@@ -17,10 +18,10 @@ public class Division implements Function {
         return visitor.visit(this);
     }
 
-    public Function getLeft() {
-        return left;
+    public Function getDivisor() {
+        return divisor;
     }
-    public Function getRight() {
-        return right;
+    public Function getDividend() {
+        return dividend;
     }
 }
