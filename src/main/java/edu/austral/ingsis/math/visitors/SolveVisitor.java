@@ -13,6 +13,9 @@ public class SolveVisitor implements Visitor<Double> {
     public SolveVisitor(Map<String, Number> variables) {
         this.variables = variables;
     }
+    public SolveVisitor() {
+        this.variables = Map.of();
+    }
 
     @Override
     public Double visit(Addition addition) {
