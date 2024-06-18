@@ -5,12 +5,12 @@ import edu.austral.ingsis.math.visitors.Visitor;
 
 public class Division implements Function {
 
-    private final Function divisor;
     private final Function dividend;
+    private final Function divisor;
 
-    public Division(Function divisor, Function dividend) {
-        this.divisor = divisor;
+    public Division(Function dividend, Function divisor) {
         this.dividend = dividend;
+        this.divisor = divisor;
     }
 
     @Override
@@ -18,10 +18,10 @@ public class Division implements Function {
         return visitor.visit(this);
     }
 
-    public Function getDivisor() {
-        return divisor;
-    }
     public Function getDividend() {
         return dividend;
+    }
+    public Function getDivisor() {
+        return divisor;
     }
 }
