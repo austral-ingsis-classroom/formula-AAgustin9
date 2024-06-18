@@ -4,54 +4,68 @@ import edu.austral.ingsis.math.Number;
 import edu.austral.ingsis.math.Variable;
 import edu.austral.ingsis.math.operations.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListingVisitor implements Visitor<List<String>> {
 
-
+    private final List<String> variables = new ArrayList<>();
 
     @Override
     public List<String> visit(Addition addition) {
-        return null;
+        addition.getLeft().accept(this);
+        addition.getRight().accept(this);
+        return variables;
     }
 
     @Override
     public List<String> visit(Subtraction subtraction) {
-        return null;
+        subtraction.getLeft().accept(this);
+        subtraction.getRight().accept(this);
+        return variables;
     }
 
     @Override
     public List<String> visit(Multiplication multiplication) {
-        return null;
+        multiplication.getLeft().accept(this);
+        multiplication.getRight().accept(this);
+        return variables;
     }
 
     @Override
     public List<String> visit(Division division) {
-        return null;
+        division.getDividend().accept(this);
+        division.getDivisor().accept(this);
+        return variables;
     }
 
     @Override
     public List<String> visit(Power power) {
-        return null;
+        power.getBase().accept(this);
+        power.getExponent().accept(this);
+        return variables;
     }
 
     @Override
     public List<String> visit(SquareRoot squareRoot) {
-        return null;
+        squareRoot.getFunction().accept(this);
+        return variables;
     }
 
     @Override
     public List<String> visit(AbsoluteValue absoluteValue) {
-        return null;
+        absoluteValue.getFunction().accept(this);
+        return variables;
     }
 
     @Override
     public List<String> visit(Number number) {
-        return null;
+        return variables;
     }
 
     @Override
     public List<String> visit(Variable variable) {
-        return null;
+        variables.add(variable.getName());
+        return variables;
     }
 }
