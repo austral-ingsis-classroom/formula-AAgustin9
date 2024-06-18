@@ -1,15 +1,13 @@
 package edu.austral.ingsis.math;
 
-import edu.austral.ingsis.math.operations.*;
-import edu.austral.ingsis.math.visitors.ListingVisitor;
-import org.junit.jupiter.api.Test;
-
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.empty;
 
-import java.util.Collections;
+import edu.austral.ingsis.math.operations.*;
+import edu.austral.ingsis.math.visitors.ListingVisitor;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 public class ListVariablesTest {
 
@@ -35,7 +33,8 @@ public class ListVariablesTest {
   /** Case (9 / x) * y */
   @Test
   public void shouldListVariablesFunction3() {
-    Multiplication total = new Multiplication(new Division(new Number(9), new Variable("x")), new Variable("y"));
+    Multiplication total =
+        new Multiplication(new Division(new Number(9), new Variable("x")), new Variable("y"));
     final List<String> result = visitor.visit(total);
 
     assertThat(result, containsInAnyOrder("x", "y"));
@@ -80,7 +79,8 @@ public class ListVariablesTest {
   /** Case (5 - i) * 8 */
   @Test
   public void shouldListVariablesFunction8() {
-    Multiplication total = new Multiplication(new Subtraction(new Number(5), new Variable("i")), new Number(8));
+    Multiplication total =
+        new Multiplication(new Subtraction(new Number(5), new Variable("i")), new Number(8));
     final List<String> result = visitor.visit(total);
 
     assertThat(result, containsInAnyOrder("i"));

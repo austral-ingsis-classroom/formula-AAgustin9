@@ -5,19 +5,18 @@ import edu.austral.ingsis.math.visitors.Visitor;
 
 public class SquareRoot implements Function {
 
-    private final Function function;
+  private final Function function;
 
-    public SquareRoot(Function function) {
-        this.function = function;
-    }
+  public SquareRoot(Function function) {
+    this.function = function;
+  }
 
-    @Override
-    public <T> T accept(Visitor<T> visitor) {
-        return visitor.visit(this);
-    }
+  @Override
+  public <T> T accept(Visitor<T> visitor) {
+    return visitor.visit(this);
+  }
 
-    public Function getFunction() {
-        return function;
-    }
-
+  public Function getFunction() {
+    return function;
+  }
 }
