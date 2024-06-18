@@ -1,9 +1,7 @@
 @startuml MathEngine
 
 interface Function {
-    double evaluate();
-    String print();
-    List<Variable> getVariables();
+
     void accept(Visitor visitor);
 }
 
@@ -12,8 +10,8 @@ interface Parameter {
 }
 
 class Variable implements Parameter {
-    private String name;
-    private double value;
+    - String name;
+    - double value;
 
     // getters and setters
 }
@@ -21,32 +19,30 @@ class Constant implements Parameter {
     - value
 }
 
-interface Operation  {
+interface Operation implements Function  {
     + solve()
 }
 
-abstract class BinaryOperation {
-    - left : Parameter
-    - right : Parameter
-    - operand
+
+class Addition implements Operation {
+    + solve()
+}
+class Subtraction implements Operation {
+    + solve()
+}
+class Power implements Operation {
+    + solve()
+}
+class Product implements Operation {
+    + solve()
+}
+class Division implements Operation {
+    + solve()
+}
+class SquareRoot implements Operation {
     + solve()
 }
 
-class Addition implements BinaryOperation {
-    + solve()
-}
-class Subtraction implements BinaryOperation {
-    + solve()
-}
-class Power implements BinaryOperation {
-    + solve()
-}
-class Product implements BinaryOperation {
-    + solve()
-}
-class Division implements BinaryOperation {
-    + solve()
-}
 
 interface Visitor {
     void visit(Function function);
@@ -58,18 +54,13 @@ interface Visitor {
 class PrintVisitor implements Visitor {
     // implementation
 }
-
-abstract class UnaryOperation {
-    - number : Parameter
-    + solve()
-}
-class SquareRoot implements UnaryOperation {
-    + solve()
+class CalculateVisitor implements Visitor {
+    + calculate()
 }
 
-Parameter <|-- Operation
-Operation <|... UnaryOperation
-Operation <|... BinaryOperation
+Visitor -> Function
+
+Function <|-- Parameter
 
 @enduml
 
